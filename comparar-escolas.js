@@ -61,6 +61,10 @@ const fecharB = document.querySelector('.unidadeB__fechar')
 
 
 
+const relatorioA = document.querySelector('.relatorio__linha--a')
+const relatorioB = document.querySelector('.relatorio__linha--b')
+
+
 
 
 
@@ -91,6 +95,13 @@ function Validar(){
 
 const UnidadeA = new Senai(codigoA, cidadeA, anoA, cursosA)
 const UnidadeB = new Senai(codigoB, cidadeB, anoB, cursosB)
+
+
+const botao_instanciar = () =>{
+  const instanciarA = document.querySelector('.unidadeA__instanciar')
+
+  instanciarA.addEventListener('click')
+}
 
 
 
