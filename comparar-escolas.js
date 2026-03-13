@@ -78,9 +78,14 @@ const relatorioB = document.querySelector('.relatorio__linha--b')
 /* ===== FUNÇÃO DE VALIDAÇÃO ===== */
 
 function Validar(){
-   if (isNaN(codigoA) | isNaN(cidadeA) | isNaN(anoA) | isNaN(cursosA) | isNaN(codigoB) | isNaN(cidadeB) | isNaN(anoB) | isNaN(cursosB) )
-    mensagemA.textContent = 'Preencha todos os campos para criar a escola'
-    mensagemB.textContent = 'Preencha todos os campos para criar a escola'
+   if (isNaN(codigoA) || isNaN(cidadeA) || isNaN(anoA) || isNaN(cursosA) || isNaN(codigoB) || isNaN(cidadeB) || isNaN(anoB) | isNaN(cursosB) ){
+    mensagemA.innerHTML = `Preencha todos os campos para criar a escola`
+    mensagemB.innerHTML = `Preencha todos os campos para criar a escola`
+   } else{
+
+   }
+    
+    
 }
 
   
@@ -94,19 +99,30 @@ function Validar(){
 
 
 const UnidadeA = new Senai(codigoA, cidadeA, anoA, cursosA)
-const UnidadeB = new Senai(codigoB, cidadeB, anoB, cursosB)
 
 
-const botao_instanciar = () =>{
-  const instanciarA = document.querySelector('.unidadeA__instanciar')
+const botaoinstanciar = document.querySelectorAll('.unidadeA__instanciar[type="button"]')
 
-  instanciarA.addEventListener('click')
-}
+if (botaoinstanciar){
+  botaoinstanciar.forEach((botao) => {
+    botao.addEventListener('click', () => {
+      console.log("oi")
+    }
+  )
+    
+    
+  })
+};
+  
+
+  
+
 
 
 
 /* ===== INSTANCIAR ESCOLA B ===== */
 
+const UnidadeB = new Senai(codigoB, cidadeB, anoB, cursosB)
 
 /* ===== ABRIR ESCOLA ===== */
 
@@ -118,5 +134,22 @@ const botao_instanciar = () =>{
 
 
 /* ===== NOVA CONSULTA ===== */
+mensagemA.style.display = 'none'
+mensagemB.style.display = 'none'
+
+codigoA.value = '';
+codigoB.value = '';
+
+cidadeA.value = '';
+cidadeB.value = '';
+
+anoA.value = '';
+anoB.value = '';
+
+
+
+
+
+
 
 
