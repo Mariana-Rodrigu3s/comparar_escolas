@@ -78,7 +78,7 @@ const relatorioB = document.querySelector('.relatorio__linha--b')
 /* ===== FUNÇÃO DE VALIDAÇÃO ===== */
 
 function Validar(){
-   if (isNaN(codigoA) || isNaN(cidadeA) || isNaN(anoA) || isNaN(cursosA) || isNaN(codigoB) || isNaN(cidadeB) || isNaN(anoB) | isNaN(cursosB) ){
+   if (isNaN(codigoA.value) || isNaN(cidadeA.value) || isNaN(anoA.value) || isNaN(cursosA.value) || isNaN(codigoB.value) || isNaN(cidadeB.value) || isNaN(anoB.value) | isNaN(cursosB.value) ){
     mensagemA.innerHTML = `Preencha todos os campos para criar a escola`
     mensagemB.innerHTML = `Preencha todos os campos para criar a escola`
    } else{
@@ -99,6 +99,7 @@ function Validar(){
 
 
 const UnidadeA = new Senai(codigoA, cidadeA, anoA, cursosA)
+
 
 
 const botaoinstanciar = document.querySelectorAll('.unidadeA__instanciar[type="button"]')
@@ -126,11 +127,49 @@ const UnidadeB = new Senai(codigoB, cidadeB, anoB, cursosB)
 
 /* ===== ABRIR ESCOLA ===== */
 
+abrirA.addEventListener('click', () =>{
+  if(UnidadeA){
+    UnidadeA.abrirEscola()
+
+    console.log("Unidade A:", UnidadeA.statusFuncionamento)
+  }
+})
+
+abrirB.addEventListener('click', () =>{
+  if(UnidadeB){
+    UnidadeB.abrirEscola()
+
+    console.log("Unidade B:", UnidadeB.statusFuncionamento)
+  }
+})
+
 
 /* ===== FECHAR ESCOLA ===== */
 
+fecharB.addEventListener('click', () =>{
+  if(UnidadeB){
+    UnidadeB.fecharEscola()
+
+  }
+})
+fecharA.addEventListener('click', () =>{
+  if(UnidadeA){
+    UnidadeA.fecharEscola()
+
+  }
+})
+
 
 /* ===== RELATÓRIO DE COMPARAÇÃO ===== */
+
+if(UnidadeA){
+  relatorioA.innerHTML = `
+        <td>{UnidadeA.codigo}</td>
+        <td>{UnidadeA.cidade}</td>
+        <td>{UnidadeA.idade}</td>
+        <td>{UnidadeA.statusFuncionamento}</td>
+  `
+}
 
 
 /* ===== NOVA CONSULTA ===== */
